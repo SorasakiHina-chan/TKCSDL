@@ -1,0 +1,85 @@
+\documentclass[letterpaper,11pt,leqno]{book}
+\usepackage{book}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\bibliographystyle{book}
+
+% Enter book title to populate PDF metadata:
+\hypersetup{pdftitle={Omnichannel Inventory and Sales Management System}}
+
+% Enter path to BibTeX file with references:
+\newcommand{\bib}{book.bib}
+
+% Enter path to PDF file with figures:
+\newcommand{\pdf}{figures.pdf}
+
+\begin{document}
+
+% Enter title:
+\title{Omnichannel Inventory and Sales Management System}
+
+% Enter subtitle (can be commented out):
+\subtitle{HỆ THỐNG QUẢN LÝ BÁN HÀNG VÀ TỒN KHO ĐA KÊNH}
+
+% Enter author:
+\author{Nhóm 6}
+
+% Enter date:
+\date{ngày 1 tháng 9 năm 2026}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\frontmatter
+
+\tableofcontents
+
+% Enter book structure
+\chapter{Lời mở đầu}
+
+\input{preface}
+
+\mainmatter
+
+\part{Phân tích và yêu cầu}\label{p:requirements}
+
+\chapter{Giới thiệu}\label{c:introduction}
+\input{chapter1}
+
+\chapter{Đặc tả yêu cầu hệ thống}\label{c:requirements}
+\input{chapter2}
+
+\part{Kiến trúc và thiết kế}\label{p:architecture}
+
+\chapter{Kiến trúc hệ thống}\label{c:architecture}
+\input{chapter3}
+
+\chapter{Thiết kế cơ sở dữ liệu}\label{c:database}
+\input{chapter4}
+
+\chapter{Thiết kế chi tiết}\label{c:detailed}
+\input{chapter5}
+
+\chapter{Thiết kế UML}\label{c:uml}
+\input{chapter6}
+
+\part{Triển khai và đánh giá}\label{p:implementation}
+
+\chapter{Hiện thực hệ thống}\label{c:implementation}
+\input{chapter7}
+
+\chapter{Giao diện và triển khai hệ thống}\label{c:deployment}
+\input{chapter8}
+
+\chapter{Kiểm thử và đánh giá}\label{c:testing}
+\input{chapter9}
+
+\backmatter
+\chapter{Tài liệu tham khảo}
+\bibliography{\bib}
+
+\chapter{Lời cảm ơn}
+\input{acknowledgements}
+
+\end{document}

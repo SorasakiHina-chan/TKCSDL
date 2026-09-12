@@ -1,0 +1,57 @@
+\section{Tổng quan hiện thực}
+
+Việc hiện thực hệ thống tuân theo kiến trúc được trình bày ở Chương~\ref{c:architecture}.
+Mã nguồn được tổ chức thành các thành phần có trách nhiệm rõ ràng, trong đó quy tắc nghiệp
+vụ cốt lõi không phụ thuộc trực tiếp vào công nghệ giao diện hoặc cơ sở dữ liệu.
+
+\section{Xác thực và phân quyền}
+
+Hệ thống hỗ trợ đăng nhập, mã truy cập JWT, mã làm mới và phân quyền theo vai trò. Mỗi yêu cầu
+được xác định người dùng hiện tại và khách hàng tương ứng trước khi thực hiện thao tác nghiệp vụ.
+
+Các chức năng quản trị, kho, bán hàng và báo cáo được giới hạn theo vai trò. Các thao tác trên
+dữ liệu của khách hàng khác phải bị từ chối.
+
+\section{Danh mục sản phẩm}
+
+Phân hệ sản phẩm quản lý nhóm sản phẩm, thương hiệu, sản phẩm, biến thể, SKU, mã vạch và giá bán.
+API tìm kiếm ưu tiên các trường thường dùng tại POS và sử dụng chỉ mục phù hợp để đạt mục tiêu
+độ trễ p95 dưới 200 ms.
+
+\section{Sổ cái tồn kho và tính giá vốn}
+
+Các nghiệp vụ nhập hàng, chuyển kho, kiểm kê và bán hàng tạo biến động trong sổ cái. Không xóa
+lịch sử sổ cái trong quy trình thông thường. Giá vốn bình quân được cập nhật khi có lượng hàng
+nhập thêm và COGS được lưu lại khi đơn hàng hoàn tất.
+
+\section{Trung tâm đơn hàng}
+
+Đơn hàng từ các kênh được chuyển về một mô hình chuẩn. Bộ xử lý sự kiện kiểm tra dữ liệu, xác định
+SKU và tạo hoặc cập nhật đơn hàng. Máy trạng thái kiểm soát việc chuyển từ \textit{Draft} sang
+\textit{Reserved}, \textit{Confirmed}, \textit{Completed} hoặc trạng thái hủy hợp lệ.
+
+\section{Chống bán vượt}
+
+Dịch vụ giữ hàng thực hiện kiểm tra số lượng có thể bán trong giao dịch và khóa bản ghi tồn phù hợp.
+Nếu không đủ hàng, yêu cầu bị từ chối. Nếu đủ hàng, lượng giữ được tăng và bản ghi giữ hàng được tạo.
+
+Khi đơn hàng hoàn tất, hệ thống trừ tồn và lưu giá vốn. Khi đơn hàng bị hủy, lượng giữ được giải
+phóng theo quy tắc nghiệp vụ.
+
+\section{SignalR và Hangfire}
+
+SignalR được sử dụng để đẩy các cập nhật thời gian thực đến giao diện khi cần. Hangfire đảm nhiệm
+các công việc nền như xử lý hàng đợi, đồng bộ hoặc công việc định kỳ. Các thành phần này không
+thay thế nguồn dữ liệu chính là cơ sở dữ liệu.
+
+\section{Tổ chức API}
+
+API được tổ chức theo các nhóm chức năng như xác thực, sản phẩm, tồn kho, đơn hàng, giữ hàng,
+POS và báo cáo. Mỗi nhóm nên có mô hình yêu cầu và phản hồi rõ ràng, mã lỗi nhất quán và kiểm tra
+quyền trước khi thực hiện thao tác.
+
+\section{Chất lượng hiện thực}
+
+Mã nguồn cần được kiểm tra tự động, áp dụng quy tắc định dạng thống nhất và tránh đưa thông tin
+bí mật vào kho mã nguồn. Các thành phần nghiệp vụ quan trọng phải có kiểm thử đơn vị và tích hợp,
+đặc biệt là tính giá vốn và chống bán vượt.

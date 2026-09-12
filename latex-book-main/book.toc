@@ -1,0 +1,84 @@
+\babel@toc {vietnamese}{}\relax 
+\contentsline {chapter}{Lời mở đầu}{v}{chapter*.1}%
+\contentsline {part}{I\hspace {1em}Phân tích và yêu cầu}{1}{part*.2}%
+\contentsline {chapter}{\numberline {1}Giới thiệu}{3}{chapter*.3}%
+\contentsline {section}{\numberline {1.1}Bối cảnh}{3}{section*.4}%
+\contentsline {section}{\numberline {1.2}Phát biểu bài toán}{3}{section*.5}%
+\contentsline {section}{\numberline {1.3}Mục tiêu đề tài}{4}{section*.6}%
+\contentsline {section}{\numberline {1.4}Phạm vi}{4}{section*.16}%
+\contentsline {section}{\numberline {1.5}Giải pháp đề xuất}{4}{section*.17}%
+\contentsline {section}{\numberline {1.6}Kết quả mong đợi}{5}{section*.18}%
+\contentsline {chapter}{\numberline {2}Đặc tả yêu cầu hệ thống}{7}{chapter*.19}%
+\contentsline {section}{\numberline {2.1}Các bên liên quan}{7}{section*.20}%
+\contentsline {section}{\numberline {2.2}Yêu cầu chức năng}{7}{section*.21}%
+\contentsline {subsection}{\numberline {2.2.1}Xác thực và đa khách hàng}{7}{subsection*.22}%
+\contentsline {subsection}{\numberline {2.2.2}Danh mục sản phẩm}{8}{subsection*.23}%
+\contentsline {subsection}{\numberline {2.2.3}Quản lý tồn kho}{8}{subsection*.24}%
+\contentsline {subsection}{\numberline {2.2.4}Tính giá vốn}{8}{subsection*.25}%
+\contentsline {subsection}{\numberline {2.2.5}Quản lý đơn hàng}{8}{subsection*.26}%
+\contentsline {subsection}{\numberline {2.2.6}Giữ hàng và chống bán vượt}{9}{subsection*.27}%
+\contentsline {subsection}{\numberline {2.2.7}Điểm bán hàng POS}{9}{subsection*.28}%
+\contentsline {subsection}{\numberline {2.2.8}Báo cáo}{9}{subsection*.29}%
+\contentsline {subsection}{\numberline {2.2.9}Mô phỏng và xử lý thời gian thực}{10}{subsection*.30}%
+\contentsline {section}{\numberline {2.3}Yêu cầu phi chức năng}{10}{section*.31}%
+\contentsline {subsection}{\numberline {2.3.1}Hiệu năng}{10}{subsection*.32}%
+\contentsline {subsection}{\numberline {2.3.2}Đồng thời và nhất quán}{10}{subsection*.33}%
+\contentsline {subsection}{\numberline {2.3.3}Bảo mật}{10}{subsection*.34}%
+\contentsline {subsection}{\numberline {2.3.4}Khả dụng và khả năng sử dụng}{10}{subsection*.35}%
+\contentsline {subsection}{\numberline {2.3.5}Khả năng bảo trì và kiểm thử}{11}{subsection*.36}%
+\contentsline {section}{\numberline {2.4}Ma trận truy vết yêu cầu}{11}{section*.37}%
+\contentsline {part}{II\hspace {1em}Kiến trúc và thiết kế}{13}{part*.38}%
+\contentsline {chapter}{\numberline {3}Kiến trúc hệ thống}{15}{chapter*.39}%
+\contentsline {section}{\numberline {3.1}Tổng quan kiến trúc}{15}{section*.40}%
+\contentsline {section}{\numberline {3.2}Các thành phần logic}{15}{section*.41}%
+\contentsline {section}{\numberline {3.3}Thiết kế SaaS đa khách hàng}{16}{section*.42}%
+\contentsline {section}{\numberline {3.4}Công nghệ dự kiến}{16}{section*.43}%
+\contentsline {section}{\numberline {3.5}Kiến trúc giao diện}{16}{section*.44}%
+\contentsline {section}{\numberline {3.6}Nhất quán tồn kho}{16}{section*.45}%
+\contentsline {section}{\numberline {3.7}Kiến trúc bảo mật}{17}{section*.46}%
+\contentsline {section}{\numberline {3.8}Kiến trúc triển khai}{17}{section*.47}%
+\contentsline {section}{\numberline {3.9}Mục tiêu chất lượng}{17}{section*.48}%
+\contentsline {chapter}{\numberline {4}Thiết kế cơ sở dữ liệu}{19}{chapter*.49}%
+\contentsline {section}{\numberline {4.1}Tổng quan cơ sở dữ liệu}{19}{section*.50}%
+\contentsline {section}{\numberline {4.2}Các thực thể chính}{19}{section*.51}%
+\contentsline {section}{\numberline {4.3}Khách hàng và quyền truy cập}{19}{section*.52}%
+\contentsline {section}{\numberline {4.4}Mô hình sản phẩm}{20}{section*.53}%
+\contentsline {section}{\numberline {4.5}Sổ cái tồn kho chỉ ghi thêm}{20}{section*.54}%
+\contentsline {section}{\numberline {4.6}Số dư tồn kho}{20}{section*.55}%
+\contentsline {section}{\numberline {4.7}Đơn hàng và giữ hàng}{20}{section*.56}%
+\contentsline {section}{\numberline {4.8}Chỉ mục và toàn vẹn dữ liệu}{20}{section*.57}%
+\contentsline {section}{\numberline {4.9}Sơ đồ cơ sở dữ liệu}{21}{section*.58}%
+\contentsline {chapter}{\numberline {5}Thiết kế chi tiết}{23}{chapter*.60}%
+\contentsline {section}{\numberline {5.1}Mô hình miền nghiệp vụ}{23}{section*.61}%
+\contentsline {section}{\numberline {5.2}Thiết kế sổ cái tồn kho}{23}{section*.62}%
+\contentsline {section}{\numberline {5.3}Máy trạng thái đơn hàng}{24}{section*.71}%
+\contentsline {section}{\numberline {5.4}Tính giá vốn bình quân gia quyền}{24}{section*.72}%
+\contentsline {section}{\numberline {5.5}Thuật toán giữ hàng}{24}{section*.73}%
+\contentsline {section}{\numberline {5.6}Giải phóng và trừ tồn}{25}{section*.82}%
+\contentsline {section}{\numberline {5.7}Thanh toán nhanh tại POS}{25}{section*.83}%
+\contentsline {section}{\numberline {5.8}Xử lý lỗi và giao dịch bù trừ}{25}{section*.84}%
+\contentsline {section}{\numberline {5.9}Xử lý đồng thời}{25}{section*.85}%
+\contentsline {chapter}{\numberline {6}Thiết kế UML}{27}{chapter*.86}%
+\contentsline {section}{\numberline {6.1}Additional equations}{27}{section*.87}%
+\contentsline {section}{\numberline {6.2}Discussion}{28}{section*.92}%
+\contentsline {part}{III\hspace {1em}Triển khai và đánh giá}{29}{part*.93}%
+\contentsline {chapter}{\numberline {7}Hiện thực hệ thống}{31}{chapter*.94}%
+\contentsline {section}{\numberline {7.1}Tổng quan hiện thực}{31}{section*.95}%
+\contentsline {section}{\numberline {7.2}Xác thực và phân quyền}{31}{section*.96}%
+\contentsline {section}{\numberline {7.3}Danh mục sản phẩm}{31}{section*.97}%
+\contentsline {section}{\numberline {7.4}Sổ cái tồn kho và tính giá vốn}{32}{section*.98}%
+\contentsline {section}{\numberline {7.5}Trung tâm đơn hàng}{32}{section*.99}%
+\contentsline {section}{\numberline {7.6}Chống bán vượt}{32}{section*.100}%
+\contentsline {section}{\numberline {7.7}SignalR và Hangfire}{32}{section*.101}%
+\contentsline {section}{\numberline {7.8}Tổ chức API}{32}{section*.102}%
+\contentsline {section}{\numberline {7.9}Chất lượng hiện thực}{32}{section*.103}%
+\contentsline {chapter}{\numberline {8}Giao diện và triển khai hệ thống}{33}{chapter*.104}%
+\contentsline {section}{\numberline {8.1}Main findings}{33}{section*.105}%
+\contentsline {section}{\numberline {8.2}Key takeaways}{33}{section*.106}%
+\contentsline {section}{\numberline {8.3}Closing remark}{34}{section*.107}%
+\contentsline {chapter}{\numberline {9}Kiểm thử và đánh giá}{35}{chapter*.108}%
+\contentsline {section}{\numberline {9.1}Open questions}{35}{section*.109}%
+\contentsline {section}{\numberline {9.2}Related literature}{35}{section*.110}%
+\contentsline {section}{\numberline {9.3}Concluding remarks}{36}{section*.111}%
+\contentsline {chapter}{Tài liệu tham khảo}{37}{chapter*.112}%
+\contentsline {chapter}{Lời cảm ơn}{39}{chapter*.113}%
