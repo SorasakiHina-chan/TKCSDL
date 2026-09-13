@@ -1,57 +1,102 @@
-\section{Tổng quan hiện thực}
+\chapter{Thiết kế giao diện hệ thống}
+\label{c:interface}
 
-Việc hiện thực hệ thống tuân theo kiến trúc được trình bày ở Chương~\ref{c:architecture}.
-Mã nguồn được tổ chức thành các thành phần có trách nhiệm rõ ràng, trong đó quy tắc nghiệp
-vụ cốt lõi không phụ thuộc trực tiếp vào công nghệ giao diện hoặc cơ sở dữ liệu.
+Chương này trình bày thiết kế giao diện của hệ thống OISM.
+Nội dung tập trung vào bố cục, chức năng và trải nghiệm sử dụng của các màn hình chính.
+Không trình bày mã nguồn trong chương này.
 
-\section{Xác thực và phân quyền}
+\section{Giao diện đăng nhập}
 
-Hệ thống hỗ trợ đăng nhập, mã truy cập JWT, mã làm mới và phân quyền theo vai trò. Mỗi yêu cầu
-được xác định người dùng hiện tại và khách hàng tương ứng trước khi thực hiện thao tác nghiệp vụ.
+Giao diện đăng nhập cho phép người dùng nhập thông tin xác thực và truy cập hệ thống
+theo quyền được cấp.
 
-Các chức năng quản trị, kho, bán hàng và báo cáo được giới hạn theo vai trò. Các thao tác trên
-dữ liệu của khách hàng khác phải bị từ chối.
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Giao diện đăng nhập
+    }}
+    \caption{Giao diện đăng nhập}
+    \label{fig:ui-login}
+\end{figure}
 
-\section{Danh mục sản phẩm}
+\section{Giao diện quản lý sản phẩm}
 
-Phân hệ sản phẩm quản lý nhóm sản phẩm, thương hiệu, sản phẩm, biến thể, SKU, mã vạch và giá bán.
-API tìm kiếm ưu tiên các trường thường dùng tại POS và sử dụng chỉ mục phù hợp để đạt mục tiêu
-độ trễ p95 dưới 200 ms.
+Màn hình quản lý sản phẩm hỗ trợ theo dõi danh mục, thương hiệu, biến thể, SKU,
+mã vạch và thông tin giá bán.
 
-\section{Sổ cái tồn kho và tính giá vốn}
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Giao diện quản lý sản phẩm
+    }}
+    \caption{Giao diện quản lý sản phẩm}
+    \label{fig:ui-product}
+\end{figure}
 
-Các nghiệp vụ nhập hàng, chuyển kho, kiểm kê và bán hàng tạo biến động trong sổ cái. Không xóa
-lịch sử sổ cái trong quy trình thông thường. Giá vốn bình quân được cập nhật khi có lượng hàng
-nhập thêm và COGS được lưu lại khi đơn hàng hoàn tất.
+\section{Giao diện quản lý tồn kho}
 
-\section{Trung tâm đơn hàng}
+Màn hình quản lý tồn kho cho phép theo dõi số lượng hàng hóa, các biến động nhập xuất
+và trạng thái tồn kho theo chi nhánh.
 
-Đơn hàng từ các kênh được chuyển về một mô hình chuẩn. Bộ xử lý sự kiện kiểm tra dữ liệu, xác định
-SKU và tạo hoặc cập nhật đơn hàng. Máy trạng thái kiểm soát việc chuyển từ \textit{Draft} sang
-\textit{Reserved}, \textit{Confirmed}, \textit{Completed} hoặc trạng thái hủy hợp lệ.
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Giao diện quản lý tồn kho
+    }}
+    \caption{Giao diện quản lý tồn kho}
+    \label{fig:ui-inventory}
+\end{figure}
 
-\section{Chống bán vượt}
+\section{Giao diện quản lý đơn hàng}
 
-Dịch vụ giữ hàng thực hiện kiểm tra số lượng có thể bán trong giao dịch và khóa bản ghi tồn phù hợp.
-Nếu không đủ hàng, yêu cầu bị từ chối. Nếu đủ hàng, lượng giữ được tăng và bản ghi giữ hàng được tạo.
+Màn hình đơn hàng tập trung hiển thị các đơn hàng từ nhiều kênh bán hàng và trạng thái
+xử lý của từng đơn.
 
-Khi đơn hàng hoàn tất, hệ thống trừ tồn và lưu giá vốn. Khi đơn hàng bị hủy, lượng giữ được giải
-phóng theo quy tắc nghiệp vụ.
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Giao diện quản lý đơn hàng
+    }}
+    \caption{Giao diện quản lý đơn hàng}
+    \label{fig:ui-order}
+\end{figure}
 
-\section{SignalR và Hangfire}
+\section{Giao diện POS}
 
-SignalR được sử dụng để đẩy các cập nhật thời gian thực đến giao diện khi cần. Hangfire đảm nhiệm
-các công việc nền như xử lý hàng đợi, đồng bộ hoặc công việc định kỳ. Các thành phần này không
-thay thế nguồn dữ liệu chính là cơ sở dữ liệu.
+Giao diện POS được thiết kế ưu tiên thao tác nhanh, tìm kiếm sản phẩm và kiểm tra tồn kho
+trước khi hoàn tất giao dịch.
 
-\section{Tổ chức API}
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Giao diện POS
+    }}
+    \caption{Giao diện bán hàng tại POS}
+    \label{fig:ui-pos}
+\end{figure}
 
-API được tổ chức theo các nhóm chức năng như xác thực, sản phẩm, tồn kho, đơn hàng, giữ hàng,
-POS và báo cáo. Mỗi nhóm nên có mô hình yêu cầu và phản hồi rõ ràng, mã lỗi nhất quán và kiểm tra
-quyền trước khi thực hiện thao tác.
+\section{Giao diện báo cáo}
 
-\section{Chất lượng hiện thực}
+Màn hình báo cáo trình bày các thông tin tổng quan về doanh thu, lợi nhuận gộp,
+tình hình tồn kho và các cảnh báo liên quan.
 
-Mã nguồn cần được kiểm tra tự động, áp dụng quy tắc định dạng thống nhất và tránh đưa thông tin
-bí mật vào kho mã nguồn. Các thành phần nghiệp vụ quan trọng phải có kiểm thử đơn vị và tích hợp,
-đặc biệt là tính giá vốn và chống bán vượt.
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Giao diện báo cáo
+    }}
+    \caption{Giao diện báo cáo}
+    \label{fig:ui-report}
+\end{figure}
+
+\section{Nhận xét về giao diện}
+
+Các giao diện được tổ chức theo nhóm chức năng, giúp người dùng dễ tìm kiếm thông tin
+và thực hiện các nghiệp vụ chính. Khi hoàn thiện, nhóm có thể bổ sung ảnh chụp màn hình
+thực tế vào các vị trí giữ chỗ ở trên.
