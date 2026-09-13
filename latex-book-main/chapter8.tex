@@ -1,13 +1,95 @@
-% Summary chapter: enter main findings and takeaways from the book.
+\chapter{Quy trình nghiệp vụ và hoạt động hệ thống}
+\label{c:workflow}
 
-\section{Main findings} 
+Chương này mô tả các quy trình nghiệp vụ chính của OISM dưới dạng sơ đồ và mô tả ngắn.
+Mục tiêu là giúp người đọc dễ hình dung cách hệ thống xử lý các nghiệp vụ bán hàng,
+nhập xuất và quản lý tồn kho.
 
-This book has presented a template for academic books. The initial chapters introduced the structure: an introduction, sections and subsections with references and paragraphs, and a chapter on mathematical typesetting. The next chapters illustrated lists, figures, and tables; cross-references and conclusion; further results; and extensions. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+\section{Quy trình nhập hàng}
 
-\section{Key takeaways} 
+Quy trình nhập hàng mô tả các bước từ khi tiếp nhận hàng hóa đến khi cập nhật tồn kho.
 
-Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipiscing velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Sơ đồ quy trình nhập hàng
+    }}
+    \caption{Quy trình nhập hàng}
+    \label{fig:workflow-purchase}
+\end{figure}
 
-\section{Closing remark} 
+\section{Quy trình bán hàng tại POS}
 
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Lorem ipsum dolor sit amet, consectetur adipiscing elit\index{elit}. Sed do eiusmod\index{eiusmod} tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Quy trình bán hàng tại POS gồm tìm kiếm sản phẩm, kiểm tra tồn kho, giữ hàng,
+xác nhận giao dịch và cập nhật tồn kho.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Sơ đồ quy trình bán hàng tại POS
+    }}
+    \caption{Quy trình bán hàng tại POS}
+    \label{fig:workflow-pos}
+\end{figure}
+
+\section{Quy trình tiếp nhận đơn hàng đa kênh}
+
+Đơn hàng từ các kênh bán hàng được tiếp nhận và đưa về mô hình đơn hàng thống nhất
+trước khi xử lý.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Sơ đồ quy trình tiếp nhận đơn hàng đa kênh
+    }}
+    \caption{Quy trình tiếp nhận đơn hàng đa kênh}
+    \label{fig:workflow-omnichannel}
+\end{figure}
+
+\section{Quy trình giữ hàng}
+
+Hệ thống kiểm tra số lượng có thể bán trước khi giữ hàng cho đơn.
+Nếu số lượng không đủ, yêu cầu giữ hàng bị từ chối.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Sơ đồ quy trình giữ hàng
+    }}
+    \caption{Quy trình giữ hàng}
+    \label{fig:workflow-reservation}
+\end{figure}
+
+\section{Quy trình xuất kho và hoàn tất đơn hàng}
+
+Sau khi đơn hàng được xác nhận, hàng hóa được xuất kho và đơn hàng chuyển sang trạng thái
+hoàn tất theo quy trình nghiệp vụ.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Sơ đồ quy trình xuất kho
+    }}
+    \caption{Quy trình xuất kho và hoàn tất đơn hàng}
+    \label{fig:workflow-deduct}
+\end{figure}
+
+\section{Quy trình hủy đơn}
+
+Khi đơn hàng bị hủy, phần hàng đã giữ được giải phóng để có thể tiếp tục được bán
+cho các đơn hàng khác.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
+        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
+        Sơ đồ quy trình hủy đơn
+    }}
+    \caption{Quy trình hủy đơn}
+    \label{fig:workflow-cancel}
+\end{figure}
