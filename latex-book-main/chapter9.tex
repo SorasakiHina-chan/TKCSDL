@@ -1,13 +1,85 @@
-% Future research chapter: enter open questions and directions.
+\chapter{Đánh giá, hạn chế và hướng phát triển}
+\label{c:evaluation}
 
-\section{Open questions}
+Chương này tổng hợp kết quả của quá trình phân tích và thiết kế hệ thống OISM,
+đồng thời trình bày các hạn chế và hướng phát triển trong tương lai.
 
-Several directions remain for future work. First, one could extend the framework to allow for such-and-such. Second, it would be valuable to incorporate this-and-that and to relax certains assumptions. Third, empirical applications to such-and-such domain would help assess the quantitative relevance of the results. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor\index{tempor} incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\section{Kết quả đạt được}
 
-\section{Related literature}
+Hệ thống được định hướng giải quyết bài toán quản lý bán hàng và tồn kho trong môi trường
+đa kênh. Các nội dung chính đã được phân tích và thiết kế gồm quản lý sản phẩm,
+quản lý tồn kho, quản lý đơn hàng, cơ chế giữ hàng, POS và báo cáo.
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam erat volutpat. Donec tincidunt, quam sed pellentesque fermentum, lorem dolor consequat lectus, at pulvinar arcu ipsum in ligula.
+\section{Mức độ đáp ứng yêu cầu}
 
-\section{Concluding remarks}
+Các yêu cầu chức năng và phi chức năng được trình bày trong Chương 2 và được liên kết
+với các nội dung thiết kế ở các chương tiếp theo. Cách tổ chức này giúp nhóm dễ đối chiếu
+giữa yêu cầu ban đầu và giải pháp thiết kế.
 
-Mauris pretium ipsum id sapien posuere vehicula. Vivamus consectetur, turpis vitae pellentesque molestie, libero odio venenatis mauris, id vestibulum nisl nulla sit amet enim. Integer vitae metus eget risus vulputate consectetur. Suspendisse potenti. Quisque dictum purus non justo aliquet, sed tristique odio dapibus. Sed tincidunt justo vitae leo mattis, a ullamcorper metus vestibulum. Sed ac sapien metus. Sed non mauris nec nisl vehicula iaculis eget eget enim. Suspendisse potenti. Sed ac purus volutpat, venenatis sem eget, fermentum lorem. Suspendisse eu convallis tortor. Nunc vel dictum libero. Cras eleifend, orci non faucibus gravida, sapien quam pharetra ligula, nec tincidunt elit ex at sapien.
+\begin{table}[htbp]
+    \centering
+    \caption{Tổng hợp mức độ đáp ứng yêu cầu}
+    \label{tab:evaluation-requirements}
+    \begin{tabular}{|p{0.25\textwidth}|p{0.30\textwidth}|p{0.30\textwidth}|}
+        \hline
+        \textbf{Nhóm yêu cầu} & \textbf{Nội dung chính} & \textbf{Đánh giá} \\
+        \hline
+        Xác thực và phân quyền & Người dùng, vai trò, tenant & Đáp ứng theo thiết kế \\
+        \hline
+        Sản phẩm & Sản phẩm, SKU, biến thể, mã vạch & Đáp ứng theo thiết kế \\
+        \hline
+        Tồn kho & Ledger, nhập, xuất, chuyển kho & Đáp ứng theo thiết kế \\
+        \hline
+        Đơn hàng & Đơn hàng tập trung, trạng thái & Đáp ứng theo thiết kế \\
+        \hline
+        Giữ hàng & Kiểm tra tồn và giữ hàng & Đáp ứng theo thiết kế \\
+        \hline
+        POS & Tìm kiếm, kiểm tra tồn, thanh toán & Đáp ứng theo thiết kế \\
+        \hline
+        Báo cáo & Doanh thu, lợi nhuận, tồn kho & Đáp ứng theo thiết kế \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Ưu điểm của giải pháp}
+
+Một số ưu điểm chính của giải pháp gồm:
+
+\begin{itemize}
+    \item Quản lý tập trung dữ liệu bán hàng và tồn kho từ nhiều kênh.
+    \item Thiết kế Inventory Ledger theo hướng chỉ ghi thêm các biến động.
+    \item Có cơ chế giữ hàng nhằm hạn chế tình trạng bán vượt tồn.
+    \item Hỗ trợ mô hình đa tenant phù hợp với hệ thống SaaS.
+    \item Kiến trúc được tổ chức theo hướng rõ ràng, dễ mở rộng.
+\end{itemize}
+
+\section{Hạn chế}
+
+Trong phạm vi đồ án, hệ thống vẫn có một số hạn chế:
+
+\begin{itemize}
+    \item Chưa bao phủ đầy đủ mọi nghiệp vụ đặc thù của từng sàn thương mại điện tử.
+    \item Các yêu cầu về hiệu năng và tải lớn cần được kiểm chứng bằng môi trường triển khai thực tế.
+    \item Một số giao diện và quy trình có thể cần tiếp tục điều chỉnh sau khi lấy ý kiến người dùng.
+    \item Khả năng tích hợp với các dịch vụ bên ngoài phụ thuộc vào API và chính sách của từng nền tảng.
+\end{itemize}
+
+\section{Hướng phát triển}
+
+Trong tương lai, hệ thống có thể được mở rộng theo các hướng:
+
+\begin{itemize}
+    \item Tích hợp thêm nhiều kênh bán hàng và đơn vị vận chuyển.
+    \item Bổ sung ứng dụng di động cho người quản lý và nhân viên.
+    \item Cải thiện các báo cáo và khả năng phân tích dữ liệu.
+    \item Bổ sung chức năng dự báo nhu cầu và hỗ trợ quyết định nhập hàng.
+    \item Mở rộng khả năng xử lý khi số lượng tenant và giao dịch tăng cao.
+    \item Hoàn thiện các cơ chế giám sát, sao lưu và phục hồi hệ thống.
+\end{itemize}
+
+\section{Kết luận}
+
+Qua quá trình phân tích và thiết kế, đề tài đã xây dựng được một mô hình hệ thống
+quản lý bán hàng và tồn kho đa kênh với các thành phần và quy trình chính được xác định
+rõ ràng. Các thiết kế về yêu cầu, kiến trúc, dữ liệu, nghiệp vụ, UML và giao diện tạo thành
+cơ sở để tiếp tục hoàn thiện hệ thống trong các giai đoạn tiếp theo.
