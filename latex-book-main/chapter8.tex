@@ -1,6 +1,3 @@
-\chapter{Quy trình nghiệp vụ và hoạt động hệ thống}
-\label{c:workflow}
-
 Chương này mô tả các quy trình nghiệp vụ chính của OISM dưới dạng sơ đồ và mô tả ngắn.
 Mục tiêu là giúp người đọc dễ hình dung cách hệ thống xử lý các nghiệp vụ bán hàng,
 nhập xuất và quản lý tồn kho.
@@ -9,12 +6,12 @@ nhập xuất và quản lý tồn kho.
 
 Quy trình nhập hàng mô tả các bước từ khi tiếp nhận hàng hóa đến khi cập nhật tồn kho.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
-        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
-        Sơ đồ quy trình nhập hàng
-    }}
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/Nhập hàng.png}
     \caption{Quy trình nhập hàng}
     \label{fig:workflow-purchase}
 \end{figure}
@@ -24,12 +21,12 @@ Quy trình nhập hàng mô tả các bước từ khi tiếp nhận hàng hóa 
 Quy trình bán hàng tại POS gồm tìm kiếm sản phẩm, kiểm tra tồn kho, giữ hàng,
 xác nhận giao dịch và cập nhật tồn kho.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
-        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
-        Sơ đồ quy trình bán hàng tại POS
-    }}
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/bán POS.png}
     \caption{Quy trình bán hàng tại POS}
     \label{fig:workflow-pos}
 \end{figure}
@@ -39,12 +36,12 @@ xác nhận giao dịch và cập nhật tồn kho.
 Đơn hàng từ các kênh bán hàng được tiếp nhận và đưa về mô hình đơn hàng thống nhất
 trước khi xử lý.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
-        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
-        Sơ đồ quy trình tiếp nhận đơn hàng đa kênh
-    }}
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/nhận hàng.png}
     \caption{Quy trình tiếp nhận đơn hàng đa kênh}
     \label{fig:workflow-omnichannel}
 \end{figure}
@@ -54,12 +51,12 @@ trước khi xử lý.
 Hệ thống kiểm tra số lượng có thể bán trước khi giữ hàng cho đơn.
 Nếu số lượng không đủ, yêu cầu giữ hàng bị từ chối.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
-        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
-        Sơ đồ quy trình giữ hàng
-    }}
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/giuhang.png}
     \caption{Quy trình giữ hàng}
     \label{fig:workflow-reservation}
 \end{figure}
@@ -69,12 +66,12 @@ Nếu số lượng không đủ, yêu cầu giữ hàng bị từ chối.
 Sau khi đơn hàng được xác nhận, hàng hóa được xuất kho và đơn hàng chuyển sang trạng thái
 hoàn tất theo quy trình nghiệp vụ.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
-        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
-        Sơ đồ quy trình xuất kho
-    }}
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/nhapkho.png}
     \caption{Quy trình xuất kho và hoàn tất đơn hàng}
     \label{fig:workflow-deduct}
 \end{figure}
@@ -84,12 +81,12 @@ hoàn tất theo quy trình nghiệp vụ.
 Khi đơn hàng bị hủy, phần hàng đã giữ được giải phóng để có thể tiếp tục được bán
 cho các đơn hàng khác.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \fbox{\parbox[c][7cm][c]{0.92\textwidth}{\centering
-        \textbf{KHU VỰC CHÈN ẢNH}\\[0.5cm]
-        Sơ đồ quy trình hủy đơn
-    }}
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/huydon.png}
     \caption{Quy trình hủy đơn}
     \label{fig:workflow-cancel}
 \end{figure}

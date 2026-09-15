@@ -1,31 +1,117 @@
-This chapter extends the material from the math and theory sections. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt.
+Chương này được dành để trình bày các sơ đồ UML của hệ thống OISM.
+Các sơ đồ sẽ được bổ sung dưới dạng hình ảnh vào các vị trí tương ứng.
+Không cần trình bày mã nguồn trong chương này.
 
-\section{Additional equations}\label{s:further}
+\section{Sơ đồ Use Case}
 
-Consider the following expression, which combines elements from the main text:
-\begin{equation}
-\mathbb{E}(N(z^*)) \approx \frac{1-\mathbb{P}(\alpha\pi)}{1-\pi}- \frac{f(y)}{z(p)^*} + P(\Gamma).
-\label{e:cv3}\end{equation}
-Lorem ipsum dolor sit amet, consectetur\index{consectetur} adipiscing\index{adipiscing} elit. Sed ullamcorper justo nec sem blandit, ac interdum libero convallis. Nulla facilisi. Etiam euismod, purus eget tempor feugiat, lectus ex vehicula justo, ut feugiat odio nisi sit amet lorem. Vivamus id lobortis justo. Sed varius scelerisque nibh, ut finibus quam vehicula nec.
+Sơ đồ Use Case mô tả các tác nhân và các chức năng chính của hệ thống.
 
-\begin{lemma} Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat:
-\begin{equation*}
-\mathcal{X}^* = \sum_{0}^{\infty} \beta(i) \cdot \frac{1-\zeta}{1-\beta(i)\beta}.
-\end{equation*}
-\end{lemma}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/oner.png}
+    \caption{Sơ đồ Use Case của Owner}
+    \label{fig:uml-usecase-owner}
+\end{figure}
 
-\begin{lemma} Aliquam erat volutpat. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat:
-\begin{equation}
-Q^* = \int_{0}^{\infty} \mu(j) \cdot \frac{1-\nu(j)}{1-\exp(\beta(j))}\,dj.
-\label{e:cv2}\end{equation}
-\end{lemma}
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam erat volutpat. Donec tincidunt, quam sed pellentesque fermentum, lorem dolor consequat lectus, at pulvinar arcu ipsum in ligula. Mauris pretium ipsum id sapien posuere vehicula. Vivamus consectetur, turpis vitae pellentesque molestie, libero odio venenatis mauris, id vestibulum nisl nulla sit amet enim. Cras ultricies consectetur ex, sit amet vestibulum lacus hendrerit vel. Sed lacinia eleifend purus. Nunc dignissim eros et sapien lacinia eleifend.
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/manager.png}
+    \caption{Sơ đồ Use Case của Manager}
+    \label{fig:uml-usecase-manager}
+\end{figure}
 
-\section{Discussion}
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/warehouse.png}
+    \caption{Sơ đồ Use Case của Warehouse Staff}
+    \label{fig:uml-usecase-warehouse}
+\end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius nisi vel ipsum vehicula, at finibus justo ultrices. Morbi vitae leo vitae purus dapibus tempor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum sed nisi sit amet mi suscipit suscipit non nec tortor. Vivamus non ligula id turpis tempus fermentum ac sit amet leo.
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/pos.png}
+    \caption{Sơ đồ Use Case của POS}
+    \label{fig:uml-usecase-pos}
+\end{figure}
 
-Etiam sit amet magna at turpis fringilla vestibulum. Sed non nisl eu velit consectetur malesuada eget eu libero. Sed a nisi sit amet velit facilisis feugiat nec at est. Quisque nec ultrices purus. Maecenas gravida mauris vel nulla eleifend, non dictum enim ullamcorper. Sed sit amet turpis in lectus dictum facilisis. Donec sed eros sed dui consectetur dictum. Sed volutpat tortor nec odio viverra, id sodales enim congue. Maecenas sit amet eros vitae nisl placerat mattis.
+\section{Sơ đồ Class}
 
-Maecenas nec risus nec nibh hendrerit ultricies. Nulla facilisi. Maecenas in magna eget felis dictum tempus. Donec vehicula, dolor nec dictum aliquam, arcu libero commodo metus, nec varius neque magna at nulla. Sed nec arcu sollicitudin, scelerisque tortor nec, viverra arcu. Cras suscipit mi vitae erat varius, nec ullamcorper lectus tristique. Maecenas aliquet lorem vitae velit ullamcorper, eget pellentesque velit rhoncus. Sed at risus at arcu hendrerit facilisis. Sed a massa hendrerit, rutrum orci ac, condimentum enim. Donec eget vestibulum eros. In hac habitasse platea dictumst.
+Sơ đồ Class mô tả các lớp chính và mối quan hệ giữa các lớp trong hệ thống.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/Class.png}
+    \caption{Sơ đồ Class}
+    \label{fig:uml-class}
+\end{figure}
+
+\section{Sơ đồ Sequence -- Giữ hàng}
+
+Sơ đồ Sequence mô tả trình tự xử lý khi hệ thống thực hiện giữ hàng cho một đơn hàng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/giữ hàng.png}
+    \caption{Sơ đồ Sequence cho nghiệp vụ giữ hàng}
+    \label{fig:uml-sequence-reservation}
+\end{figure}
+
+\section{Sơ đồ Sequence -- Thanh toán nhanh}
+
+Sơ đồ Sequence mô tả trình tự xử lý của quy trình thanh toán nhanh tại POS.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/cash.png}
+    \caption{Sơ đồ Sequence cho nghiệp vụ thanh toán nhanh}
+    \label{fig:uml-sequence-checkout}
+\end{figure}
+
+\section{Sơ đồ Activity}
+
+Sơ đồ Activity mô tả luồng hoạt động chính của một nghiệp vụ tiêu biểu trong hệ thống.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/ad xử lý.png}
+    \caption{Sơ đồ Activity cho nghiệp vụ thanh toán nhanh}
+    \label{fig:uml-sequence-checkout}
+\end{figure}
+
+\section{Sơ đồ State}
+
+Sơ đồ State mô tả các trạng thái và quá trình chuyển trạng thái của đơn hàng.
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.92\textwidth,
+        keepaspectratio
+    ]{figures/sd đơn hàng.png}
+    \caption{Sơ đồ State cho đơn hàng}
+    \label{fig:uml-state}
+\end{figure}

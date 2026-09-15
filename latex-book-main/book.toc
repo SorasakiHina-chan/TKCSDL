@@ -31,7 +31,7 @@
 \contentsline {chapter}{\numberline {3}Kiến trúc hệ thống}{15}{chapter*.39}%
 \contentsline {section}{\numberline {3.1}Tổng quan kiến trúc}{15}{section*.40}%
 \contentsline {section}{\numberline {3.2}Các thành phần logic}{15}{section*.41}%
-\contentsline {section}{\numberline {3.3}Thiết kế SaaS đa khách hàng}{16}{section*.42}%
+\contentsline {section}{\numberline {3.3}Thiết kế Software as a Service đa khách hàng}{16}{section*.42}%
 \contentsline {section}{\numberline {3.4}Công nghệ dự kiến}{16}{section*.43}%
 \contentsline {section}{\numberline {3.5}Kiến trúc giao diện}{16}{section*.44}%
 \contentsline {section}{\numberline {3.6}Nhất quán tồn kho}{16}{section*.45}%
@@ -59,26 +59,33 @@
 \contentsline {section}{\numberline {5.8}Xử lý lỗi và giao dịch bù trừ}{25}{section*.84}%
 \contentsline {section}{\numberline {5.9}Xử lý đồng thời}{25}{section*.85}%
 \contentsline {chapter}{\numberline {6}Thiết kế UML}{27}{chapter*.86}%
-\contentsline {section}{\numberline {6.1}Additional equations}{27}{section*.87}%
-\contentsline {section}{\numberline {6.2}Discussion}{28}{section*.92}%
-\contentsline {part}{III\hspace {1em}Triển khai và đánh giá}{29}{part*.93}%
-\contentsline {chapter}{\numberline {7}Hiện thực hệ thống}{31}{chapter*.94}%
-\contentsline {section}{\numberline {7.1}Tổng quan hiện thực}{31}{section*.95}%
-\contentsline {section}{\numberline {7.2}Xác thực và phân quyền}{31}{section*.96}%
-\contentsline {section}{\numberline {7.3}Danh mục sản phẩm}{31}{section*.97}%
-\contentsline {section}{\numberline {7.4}Sổ cái tồn kho và tính giá vốn}{32}{section*.98}%
-\contentsline {section}{\numberline {7.5}Trung tâm đơn hàng}{32}{section*.99}%
-\contentsline {section}{\numberline {7.6}Chống bán vượt}{32}{section*.100}%
-\contentsline {section}{\numberline {7.7}SignalR và Hangfire}{32}{section*.101}%
-\contentsline {section}{\numberline {7.8}Tổ chức API}{32}{section*.102}%
-\contentsline {section}{\numberline {7.9}Chất lượng hiện thực}{32}{section*.103}%
-\contentsline {chapter}{\numberline {8}Giao diện và triển khai hệ thống}{33}{chapter*.104}%
-\contentsline {section}{\numberline {8.1}Main findings}{33}{section*.105}%
-\contentsline {section}{\numberline {8.2}Key takeaways}{33}{section*.106}%
-\contentsline {section}{\numberline {8.3}Closing remark}{34}{section*.107}%
-\contentsline {chapter}{\numberline {9}Kiểm thử và đánh giá}{35}{chapter*.108}%
-\contentsline {section}{\numberline {9.1}Open questions}{35}{section*.109}%
-\contentsline {section}{\numberline {9.2}Related literature}{35}{section*.110}%
-\contentsline {section}{\numberline {9.3}Concluding remarks}{36}{section*.111}%
-\contentsline {chapter}{Tài liệu tham khảo}{37}{chapter*.112}%
-\contentsline {chapter}{Lời cảm ơn}{39}{chapter*.113}%
+\contentsline {section}{\numberline {6.1}Sơ đồ Use Case}{27}{section*.87}%
+\contentsline {section}{\numberline {6.2}Sơ đồ Class}{30}{section*.92}%
+\contentsline {section}{\numberline {6.3}Sơ đồ Sequence -- Giữ hàng}{31}{section*.94}%
+\contentsline {section}{\numberline {6.4}Sơ đồ Sequence -- Thanh toán nhanh}{32}{section*.96}%
+\contentsline {section}{\numberline {6.5}Sơ đồ Activity}{32}{section*.98}%
+\contentsline {section}{\numberline {6.6}Sơ đồ State}{33}{section*.100}%
+\contentsline {part}{III\hspace {1em}Triển khai và đánh giá}{35}{part*.102}%
+\contentsline {chapter}{\numberline {7}Thiết kế giao diện hệ thống}{37}{chapter*.103}%
+\contentsline {section}{\numberline {7.1}Giao diện đăng nhập}{37}{section*.104}%
+\contentsline {section}{\numberline {7.2}Giao diện quản lý sản phẩm}{37}{section*.106}%
+\contentsline {section}{\numberline {7.3}Giao diện quản lý tồn kho}{37}{section*.108}%
+\contentsline {section}{\numberline {7.4}Giao diện quản lý đơn hàng}{40}{section*.110}%
+\contentsline {section}{\numberline {7.5}Giao diện POS}{40}{section*.112}%
+\contentsline {section}{\numberline {7.6}Giao diện báo cáo}{41}{section*.114}%
+\contentsline {section}{\numberline {7.7}Nhận xét về giao diện}{41}{section*.116}%
+\contentsline {chapter}{\numberline {8}Quy trình nghiệp vụ và hoạt động hệ thống}{43}{chapter*.117}%
+\contentsline {section}{\numberline {8.1}Quy trình nhập hàng}{43}{section*.118}%
+\contentsline {section}{\numberline {8.2}Quy trình bán hàng tại POS}{44}{section*.120}%
+\contentsline {section}{\numberline {8.3}Quy trình tiếp nhận đơn hàng đa kênh}{44}{section*.122}%
+\contentsline {section}{\numberline {8.4}Quy trình giữ hàng}{45}{section*.124}%
+\contentsline {section}{\numberline {8.5}Quy trình xuất kho và hoàn tất đơn hàng}{46}{section*.126}%
+\contentsline {section}{\numberline {8.6}Quy trình hủy đơn}{47}{section*.128}%
+\contentsline {chapter}{\numberline {9}Đánh giá, hạn chế và hướng phát triển}{49}{chapter*.130}%
+\contentsline {section}{\numberline {9.1}Kết quả đạt được}{49}{section*.131}%
+\contentsline {section}{\numberline {9.2}Mức độ đáp ứng yêu cầu}{49}{section*.132}%
+\contentsline {section}{\numberline {9.3}Ưu điểm của giải pháp}{49}{section*.134}%
+\contentsline {section}{\numberline {9.4}Hạn chế}{51}{section*.135}%
+\contentsline {section}{\numberline {9.5}Hướng phát triển}{51}{section*.136}%
+\contentsline {section}{\numberline {9.6}Kết luận}{51}{section*.137}%
+\contentsline {chapter}{\numberline {10}Lời cảm ơn}{53}{chapter*.138}%
