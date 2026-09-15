@@ -27,8 +27,7 @@ latex-book-main/
 ├── appendixB.tex
 ├── appendixC.tex
 │
-├── figures/
-│   └── README.txt
+├── figures
 │
 ├── LICENSE.md
 └── README.md
