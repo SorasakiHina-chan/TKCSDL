@@ -68,11 +68,11 @@
 \contentsline {part}{III\hspace {1em}Triển khai và đánh giá}{35}{part*.102}%
 \contentsline {chapter}{\numberline {7}Thiết kế giao diện hệ thống}{37}{chapter*.103}%
 \contentsline {section}{\numberline {7.1}Giao diện đăng nhập}{37}{section*.104}%
-\contentsline {section}{\numberline {7.2}Giao diện quản lý sản phẩm}{37}{section*.106}%
-\contentsline {section}{\numberline {7.3}Giao diện quản lý tồn kho}{37}{section*.108}%
-\contentsline {section}{\numberline {7.4}Giao diện quản lý đơn hàng}{40}{section*.110}%
+\contentsline {section}{\numberline {7.2}Giao diện quản lý sản phẩm}{38}{section*.106}%
+\contentsline {section}{\numberline {7.3}Giao diện quản lý tồn kho}{38}{section*.108}%
+\contentsline {section}{\numberline {7.4}Giao diện quản lý đơn hàng}{39}{section*.110}%
 \contentsline {section}{\numberline {7.5}Giao diện POS}{40}{section*.112}%
-\contentsline {section}{\numberline {7.6}Giao diện báo cáo}{41}{section*.114}%
+\contentsline {section}{\numberline {7.6}Giao diện báo cáo}{40}{section*.114}%
 \contentsline {section}{\numberline {7.7}Nhận xét về giao diện}{41}{section*.116}%
 \contentsline {chapter}{\numberline {8}Quy trình nghiệp vụ và hoạt động hệ thống}{43}{chapter*.117}%
 \contentsline {section}{\numberline {8.1}Quy trình nhập hàng}{43}{section*.118}%
