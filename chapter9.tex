@@ -1,0 +1,50 @@
+\section{Đánh giá thiết kế cơ sở dữ liệu}
+
+Đề tài được đánh giá theo chuỗi từ yêu cầu đến CSDL vật lý, thay vì đánh giá dựa chủ yếu trên giao diện.
+
+\section{Đối chiếu với yêu cầu}
+
+\begin{table}[H]
+\centering
+\caption{Đối chiếu yêu cầu với đầu ra thiết kế}
+\begin{tabular}{|p{0.28\textwidth}|p{0.55\textwidth}|}
+\hline
+\textbf{Yêu cầu} & \textbf{Đầu ra thiết kế} \\
+\hline
+Quản lý sản phẩm/SKU & PRODUCT, PRODUCT\_VARIANT, BARCODE, PRICE. \\
+\hline
+Theo dõi tồn kho & INVENTORY\_BALANCE và INVENTORY\_LEDGER. \\
+\hline
+Nhập hàng & PURCHASE\_RECEIPT và PURCHASE\_RECEIPT\_ITEM. \\
+\hline
+Đơn hàng đa kênh & ORDER và ORDER\_ITEM. \\
+\hline
+Giữ hàng/chống bán vượt & RESERVATION, Available và giao dịch đồng thời. \\
+\hline
+Giá vốn/COGS & WAC và CostPrice snapshot. \\
+\hline
+Chuyển kho/kiểm kê & STOCK\_TRANSFER, STOCK\_TRANSFER\_ITEM, STOCKTAKE và STOCKTAKE\_ITEM. \\
+\hline
+Báo cáo & Các truy vấn tổng hợp doanh thu, COGS, lợi nhuận và tồn. \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Các tiêu chí chất lượng}
+
+\begin{itemize}
+    \item \textbf{Tính đúng}: khóa, khóa ngoại và ràng buộc phản ánh quy tắc nghiệp vụ.
+    \item \textbf{Tính nhất quán}: cập nhật tồn kho và lịch sử được xử lý nguyên tử.
+    \item \textbf{Khả năng truy vết}: Ledger lưu lịch sử biến động thay vì sửa/xóa quá khứ.
+    \item \textbf{Giảm dư thừa}: các quan hệ được phân rã và chuẩn hóa phù hợp.
+    \item \textbf{Hiệu năng}: chỉ mục xuất phát từ các truy vấn thường xuyên.
+    \item \textbf{Khả năng mở rộng}: mô hình tách rõ dữ liệu nghiệp vụ và có thể mở rộng theo workload.
+\end{itemize}
+
+\section{Hạn chế và phần cần kiểm chứng}
+
+Thiết kế hiện tại là thiết kế phục vụ đồ án. Các tuyên bố về hiệu năng, tải đồng thời hoặc quy mô rất lớn cần được kiểm chứng bằng benchmark thực tế. Việc lựa chọn khóa bi quan hay lạc quan cũng cần phụ thuộc vào DBMS và workload triển khai.
+
+\section{Kết luận}
+
+OISM được tổ chức lại theo đúng dòng chảy của một đồ án thiết kế CSDL: bài toán nghiệp vụ dẫn đến yêu cầu; yêu cầu dẫn đến mô hình quan niệm; mô hình quan niệm được chuyển thành lược đồ quan hệ; lược đồ được kiểm tra bằng phụ thuộc hàm và chuẩn hóa; sau đó mới quyết định ràng buộc, giao dịch, chỉ mục và truy vấn. Các nội dung giao diện, UML và kiến trúc phần mềm được giữ ở phụ lục để không làm loãng trọng tâm thiết kế CSDL.

@@ -1,0 +1,43 @@
+\section{Các bên liên quan và nhu cầu dữ liệu}
+
+\begin{itemize}
+    \item \textbf{Quản trị viên}: cần quản lý tenant, người dùng, vai trò và phạm vi dữ liệu.
+    \item \textbf{Nhân viên kho}: cần quản lý nhập hàng, chuyển kho, kiểm kê và lịch sử tồn.
+    \item \textbf{Nhân viên bán hàng}: cần tra cứu SKU, kiểm tra số lượng có thể bán và tạo đơn.
+    \item \textbf{Quản lý}: cần báo cáo doanh thu, COGS, lợi nhuận gộp và tồn kho.
+    \item \textbf{Kênh bán hàng}: cung cấp dữ liệu đơn hàng để hệ thống chuẩn hóa.
+\end{itemize}
+
+\section{Yêu cầu chức năng dữ liệu}
+
+\begin{enumerate}
+    \item Quản lý tenant, người dùng, vai trò và chi nhánh.
+    \item Quản lý category, brand, product, SKU, barcode và price.
+    \item Theo dõi tồn kho theo SKU và chi nhánh.
+    \item Ghi nhận nhập hàng, xuất bán, chuyển kho và điều chỉnh kiểm kê.
+    \item Lưu đơn hàng và các dòng hàng, phân biệt kênh bán và trạng thái.
+    \item Lưu thông tin giữ hàng và trạng thái giữ.
+    \item Tính số lượng có thể bán theo công thức $Available = OnHand - Reserved$.
+    \item Lưu giá vốn tại thời điểm giao dịch để tính COGS lịch sử.
+    \item Hỗ trợ truy vấn tồn kho, đơn hàng, doanh thu, COGS, lợi nhuận và cảnh báo tồn thấp.
+\end{enumerate}
+
+\section{Quy tắc nghiệp vụ quan trọng}
+
+\begin{itemize}
+    \item Một SKU thuộc một sản phẩm và có mã định danh duy nhất trong phạm vi tenant.
+    \item Một chi nhánh thuộc một tenant.
+    \item Một đơn hàng có thể có nhiều dòng hàng; mỗi dòng tham chiếu một SKU.
+    \item Không được giữ số lượng lớn hơn $Available$ tại thời điểm giao dịch.
+    \item Sổ cái tồn kho là lịch sử biến động và không được sửa/xóa trong quy trình thông thường.
+    \item Nếu cần sửa sai nghiệp vụ đã ghi, sử dụng giao dịch điều chỉnh/bù trừ để vẫn giữ dấu vết.
+    \item Giá vốn lưu trong giao dịch bán là giá vốn lịch sử, không thay đổi khi WAC tương lai thay đổi.
+\end{itemize}
+
+\section{Yêu cầu phi chức năng ở mức CSDL}
+
+CSDL cần bảo đảm tính toàn vẹn tham chiếu, tính nguyên tử của giao dịch tồn kho, cô lập dữ liệu giữa các tenant và khả năng truy vấn hiệu quả các workload thường xuyên. Các mục tiêu hiệu năng chỉ được xem là mục tiêu thiết kế nếu chưa có kết quả đo kiểm thực tế.
+
+\section{Truy xuất nguồn yêu cầu}
+
+Mỗi yêu cầu dữ liệu phải có đầu ra tương ứng trong mô hình. Ví dụ, yêu cầu ``theo dõi lịch sử tồn kho'' dẫn đến thực thể \texttt{INVENTORY\_LEDGER}; yêu cầu ``giữ hàng'' dẫn đến \texttt{RESERVATION}; yêu cầu ``tính lợi nhuận lịch sử'' dẫn đến việc lưu \texttt{CostPrice} trong \texttt{ORDER\_ITEM}.

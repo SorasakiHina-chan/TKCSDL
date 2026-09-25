@@ -1,0 +1,38 @@
+\section{Mục tiêu của thiết kế vật lý}
+
+Thiết kế vật lý hiện thực lược đồ logic trên một DBMS cụ thể. Các quyết định gồm kiểu dữ liệu, NOT NULL, UNIQUE, CHECK, khóa ngoại, chỉ mục và khi cần có thể có phân vùng hoặc chiến lược lưu trữ.
+
+\section{Kiểu dữ liệu và ràng buộc}
+
+Khóa định danh nên dùng kiểu phù hợp với DBMS và quy mô dữ liệu. Số lượng nên dùng kiểu số nguyên nếu nghiệp vụ không cho phép phần lẻ. Giá tiền cần kiểu số có độ chính xác cố định thay vì kiểu dấu phẩy động. Các trường bắt buộc dùng NOT NULL; trạng thái có thể dùng CHECK hoặc bảng danh mục tùy thiết kế.
+
+\section{Chỉ mục theo workload}
+
+Chỉ mục không được tạo theo cảm tính. Các workload chính gồm tìm SKU, quét barcode, xem tồn theo SKU--chi nhánh, lọc đơn theo trạng thái/thời gian và xem lịch sử tồn.
+
+Ví dụ các chỉ mục có thể cân nhắc:
+\begin{verbatim}
+INDEX(TenantId, SKUCode)
+INDEX(TenantId, BarcodeValue)
+INDEX(TenantId, BranchId, SKUId)
+INDEX(TenantId, SKUId, CreatedAt)
+INDEX(TenantId, Status, OrderDate)
+\end{verbatim}
+
+Các chỉ mục cụ thể phải được xác nhận bằng kế hoạch thực thi và dữ liệu thực tế. Index giúp đọc nhanh nhưng làm tăng chi phí ghi và dung lượng lưu trữ.
+
+\section{Cô lập dữ liệu đa tenant}
+
+Các quan hệ nghiệp vụ chính mang TenantId để xác định phạm vi dữ liệu. Truy vấn phải lọc đúng tenant; khóa duy nhất có thể được thiết kế theo phạm vi tenant, ví dụ $(TenantId, SKUCode)$. Điều này vừa hỗ trợ tính đúng đắn vừa hỗ trợ các truy vấn phổ biến.
+
+\section{Tối ưu truy vấn}
+
+Trước khi tối ưu cần xác định truy vấn nào chạy thường xuyên và dữ liệu nào lớn. Sau đó kiểm tra execution plan, số dòng đọc, khả năng sử dụng index và chi phí JOIN. Không nên đánh đổi chuẩn hóa bằng denormalization nếu chưa có bằng chứng workload.
+
+\section{Partitioning và mở rộng}
+
+Nếu bảng Ledger hoặc Order rất lớn, có thể xem xét partition theo thời gian hoặc tenant tùy DBMS và workload. Đây là quyết định vật lý nâng cao, không phải yêu cầu bắt buộc của mô hình hiện tại. Chỉ áp dụng khi có số liệu chứng minh lợi ích.
+
+\section{Sao lưu và phục hồi}
+
+CSDL cần có chiến lược backup, phục hồi và kiểm tra backup định kỳ. Với Ledger append-only, dữ liệu lịch sử có giá trị kiểm toán nên cần được bảo vệ khỏi xóa nhầm.

@@ -1,0 +1,46 @@
+\section{Bối cảnh}
+
+Hoạt động bán lẻ hiện nay có thể diễn ra đồng thời tại cửa hàng (POS) và trên nhiều kênh trực tuyến. Khi dữ liệu sản phẩm, tồn kho và đơn hàng được quản lý rời rạc, cùng một SKU có thể bị bán đồng thời ở nhiều nơi, dẫn đến sai lệch tồn kho và khó truy vết nguyên nhân.
+
+Đề tài \textbf{Omnichannel Inventory and Sales Management System (OISM)} tập trung vào bài toán dữ liệu phía sau hoạt động bán hàng đa kênh. Mục tiêu của thiết kế là biến các quy tắc nghiệp vụ thành mô hình dữ liệu có cấu trúc, có khóa, có quan hệ và có ràng buộc toàn vẹn rõ ràng.
+
+\section{Phát biểu bài toán}
+
+Các vấn đề dữ liệu chính cần giải quyết gồm:
+\begin{itemize}
+    \item dữ liệu sản phẩm và SKU phải được quản lý thống nhất;
+    \item tồn kho phải theo dõi được theo SKU và chi nhánh;
+    \item mọi biến động nhập, xuất, chuyển và điều chỉnh phải có lịch sử;
+    \item đơn hàng từ nhiều kênh phải được đưa về một mô hình dữ liệu thống nhất;
+    \item phải phân biệt số lượng thực có với số lượng đã giữ để hạn chế bán vượt;
+    \item giá vốn của giao dịch đã hoàn tất phải được lưu lại để báo cáo lịch sử ổn định;
+    \item dữ liệu phải hỗ trợ các truy vấn quản trị như tồn kho, doanh thu, COGS và lợi nhuận gộp.
+\end{itemize}
+
+\section{Mục tiêu thiết kế cơ sở dữ liệu}
+
+Đề tài đặt trọng tâm vào chuỗi thiết kế:
+\[
+\text{Yêu cầu nghiệp vụ} \rightarrow \text{Thiết kế quan niệm} \rightarrow \text{Thiết kế logic} \rightarrow \text{Chuẩn hóa} \rightarrow \text{Thiết kế vật lý}.
+\]
+
+Các mục tiêu cụ thể là:
+\begin{enumerate}
+    \item xác định đúng thực thể, thuộc tính và mối kết hợp;
+    \item chuyển mô hình quan niệm thành lược đồ quan hệ với khóa chính và khóa ngoại;
+    \item phân tích phụ thuộc hàm và chuẩn hóa nhằm hạn chế dư thừa, bất nhất;
+    \item xây dựng ràng buộc toàn vẹn phù hợp với nghiệp vụ;
+    \item thiết kế giao dịch và kiểm soát đồng thời cho nghiệp vụ giữ/trừ tồn;
+    \item lựa chọn chỉ mục dựa trên workload truy vấn;
+    \item xây dựng các truy vấn tiêu biểu để chứng minh CSDL đáp ứng bài toán.
+\end{enumerate}
+
+\section{Phạm vi}
+
+Phạm vi dữ liệu gồm người dùng và vai trò, tenant, chi nhánh, danh mục, thương hiệu, sản phẩm, SKU, mã vạch, giá, nhập hàng, tồn kho, chuyển kho, kiểm kê, đơn hàng, dòng đơn hàng, giữ hàng và thông tin giá vốn lịch sử.
+
+Các thành phần giao diện, API, SignalR, Hangfire, Docker và CI/CD chỉ được xem là bối cảnh hỗ trợ; trọng tâm của báo cáo là thiết kế CSDL. Các giao diện và sơ đồ phần mềm được chuyển về phần phụ lục để minh họa thay vì chiếm nội dung chính.
+
+\section{Nguyên tắc thiết kế}
+
+Thiết kế tuân theo bốn nguyên tắc chính: (1) dữ liệu nghiệp vụ quan trọng phải có định danh rõ ràng; (2) quan hệ giữa các đối tượng phải được biểu diễn bằng khóa ngoại; (3) lịch sử tồn kho phải có khả năng truy vết; và (4) mọi quyết định vật lý như chỉ mục phải xuất phát từ truy vấn thực tế thay vì tạo chỉ mục theo cảm tính.

@@ -1,0 +1,60 @@
+\section{Toàn vẹn dữ liệu}
+
+Thiết kế sử dụng nhiều lớp ràng buộc:
+\begin{itemize}
+    \item \textbf{Entity integrity}: khóa chính duy nhất và không NULL.
+    \item \textbf{Referential integrity}: khóa ngoại phải tham chiếu bản ghi hợp lệ.
+    \item \textbf{Domain integrity}: kiểu dữ liệu, CHECK, NOT NULL và miền giá trị hợp lệ.
+    \item \textbf{Business integrity}: các quy tắc như không giữ quá Available và không cho tồn âm khi nghiệp vụ không cho phép.
+\end{itemize}
+
+\section{Giao dịch cập nhật tồn kho}
+
+Một nghiệp vụ thay đổi tồn kho cần có tính nguyên tử. Quy trình khái quát:
+\begin{enumerate}
+    \item BEGIN TRANSACTION;
+    \item khóa bản ghi INVENTORY\_BALANCE của SKU và chi nhánh;
+    \item đọc OnHand và Reserved;
+    \item kiểm tra điều kiện nghiệp vụ;
+    \item cập nhật số dư;
+    \item ghi bản ghi mới vào INVENTORY\_LEDGER;
+    \item COMMIT nếu mọi bước thành công, nếu không thì ROLLBACK.
+\end{enumerate}
+
+Điểm quan trọng là Balance và Ledger phải được cập nhật trong cùng một giao dịch. Ledger vẫn là lịch sử append-only; việc cập nhật Balance không có nghĩa là sửa lịch sử.
+
+\section{Chống bán vượt trong điều kiện đồng thời}
+
+Giả sử một SKU chỉ còn 1 đơn vị và hai đơn hàng cùng yêu cầu 1 đơn vị. Nếu cả hai giao dịch đọc dữ liệu trước khi giao dịch nào cập nhật, cả hai có thể cùng thấy Available bằng 1. Vì vậy thao tác đọc--kiểm tra--tăng Reserved phải được bảo vệ bằng khóa hoặc cơ chế kiểm tra phiên bản.
+
+Với khóa bi quan, giao dịch thứ hai phải chờ giao dịch thứ nhất hoàn tất rồi mới đọc giá trị mới. Với khóa lạc quan, bản ghi có thể có VersionNo và câu lệnh cập nhật chỉ thành công khi phiên bản vẫn đúng. Cách lựa chọn phải dựa trên workload và DBMS cụ thể.
+
+\section{Giao dịch giữ hàng}
+
+\[
+Available = OnHand - Reserved.
+\]
+
+Nếu QuantityRequest $\leq$ Available thì tăng Reserved và tạo RESERVATION. Nếu không đủ, giao dịch bị từ chối và không được tạo trạng thái giữ không hợp lệ.
+
+\section{Giải phóng và trừ tồn}
+
+Khi hủy đơn, lượng giữ được giải phóng. Khi hoàn tất đơn, lượng hàng thực tế được trừ và lượng giữ tương ứng được đóng. Mỗi biến động làm thay đổi tồn phải có dấu vết trong Ledger.
+
+\section{Chuyển kho và kiểm kê}
+
+Chuyển kho phải tạo biến động OUT ở chi nhánh nguồn và IN ở chi nhánh đích với cùng SKU và số lượng. Hai tác động phải được xử lý trong một giao dịch nếu cùng nằm trong một cơ sở dữ liệu. Kiểm kê ghi nhận chênh lệch giữa SystemQuantity và ActualQuantity; phần chênh lệch tạo biến động điều chỉnh có tham chiếu đến phiếu kiểm kê.
+
+\section{Tính giá vốn và snapshot}
+
+Giá vốn bình quân gia quyền sau khi nhập:
+\[
+C_{WAC}=\frac{Q_{old}C_{old}+Q_{in}C_{in}}{Q_{old}+Q_{in}}.
+\]
+
+COGS của dòng bán:
+\[
+COGS=Quantity\times CostPrice.
+\]
+
+\texttt{CostPrice} trong ORDER\_ITEM là snapshot. Vì vậy nếu WAC thay đổi sau này, báo cáo của đơn hàng cũ vẫn giữ đúng giá vốn đã ghi nhận.

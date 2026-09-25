@@ -1,0 +1,50 @@
+\section{Phụ thuộc hàm}
+
+Phụ thuộc hàm mô tả quan hệ xác định giữa các thuộc tính. Với quan hệ ORDER, có thể biểu diễn:
+\[
+OrderId \rightarrow TenantId, BranchId, Channel, Status, OrderDate, CustomerReference.
+\]
+
+Với SKU:
+\[
+SKUId \rightarrow TenantId, ProductId, SKUCode, VariantName, ReorderThreshold.
+\]
+
+Với ORDER\_ITEM sử dụng khóa đơn \texttt{OrderItemId}:
+\[
+OrderItemId \rightarrow OrderId, SKUId, Quantity, SellingPrice, CostPrice.
+\]
+
+Nếu mô hình hóa ORDER\_ITEM bằng khóa ghép $(OrderId, SKUId)$ thì phải xác định thêm giả định rằng một SKU chỉ xuất hiện tối đa một dòng trong một đơn. Việc dùng \texttt{OrderItemId} giúp tránh phụ thuộc vào giả định này.
+
+\section{Chuẩn hóa 1NF}
+
+Một quan hệ đạt 1NF khi thuộc tính chứa giá trị nguyên tử, không chứa nhóm lặp hoặc danh sách giá trị trong một ô. Ví dụ, không lưu nhiều SKU của một đơn vào một cột \texttt{SKUList}; thay vào đó dùng nhiều dòng ORDER\_ITEM.
+
+\section{Chuẩn hóa 2NF}
+
+2NF yêu cầu quan hệ đã ở 1NF và mọi thuộc tính không khóa phụ thuộc đầy đủ vào toàn bộ khóa ghép. Với bảng chi tiết dùng khóa $(OrderId, SKUId)$, các thuộc tính như Quantity và SellingPrice phải phụ thuộc vào cả đơn và SKU trong dòng đó, không phụ thuộc chỉ vào OrderId hoặc chỉ SKUId.
+
+\section{Chuẩn hóa 3NF}
+
+3NF loại bỏ phụ thuộc bắc cầu giữa các thuộc tính không khóa. Ví dụ, không lưu \texttt{CategoryName} trực tiếp trong ORDER hoặc SKU nếu CategoryName đã được xác định bởi CategoryId. Tách CATEGORY giúp tránh lặp tên danh mục và tránh bất nhất khi đổi tên.
+
+\section{BCNF và tiêu chí lựa chọn}
+
+BCNF yêu cầu mọi thuộc tính xác định một quan hệ phải là siêu khóa. Với các quan hệ cốt lõi của đề tài, thiết kế dựa trên khóa chính và khóa ngoại giúp giảm các phụ thuộc không mong muốn. Nếu xuất hiện phụ thuộc đặc biệt do quy tắc nghiệp vụ, cần kiểm tra lại bằng tập phụ thuộc hàm thực tế trước khi khẳng định BCNF.
+
+\section{Phân rã lược đồ}
+
+Phân rã được thực hiện để giảm dư thừa và tránh các bất thường INSERT, UPDATE, DELETE. Ví dụ, thông tin Product, Category và Brand không được gộp thành một bảng lớn nếu các thuộc tính của Category và Brand được xác định độc lập bởi khóa riêng.
+
+Một phân rã tốt cần xem xét hai tính chất: \textbf{lossless join} để khi nối lại không tạo dữ liệu giả, và \textbf{dependency preservation} để các phụ thuộc quan trọng vẫn có thể kiểm tra trên các quan hệ sau phân rã.
+
+\section{Các bất thường dữ liệu được loại bỏ}
+
+\begin{itemize}
+    \item \textbf{Update anomaly}: nếu tên Category bị lặp trong nhiều dòng, đổi tên có thể phải cập nhật nhiều nơi.
+    \item \textbf{Insert anomaly}: không thể thêm một Category mới nếu bảng chỉ cho phép lưu Category cùng một Product.
+    \item \textbf{Delete anomaly}: xóa Product cuối cùng có thể vô tình làm mất thông tin Category.
+\end{itemize}
+
+Chuẩn hóa giúp giảm các bất thường này, nhưng không có nghĩa mọi bảng đều phải tách tối đa; quyết định cuối cùng phải cân bằng với workload truy vấn và yêu cầu nghiệp vụ.

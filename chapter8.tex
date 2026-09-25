@@ -1,0 +1,81 @@
+\section{Mục tiêu của thiết kế truy vấn}
+
+Các truy vấn được xây dựng để chứng minh lược đồ có thể giải quyết trực tiếp các vấn đề nghiệp vụ. Mỗi truy vấn cần xác định đầu vào, kết quả và bảng/quan hệ tham gia.
+
+\section{Truy vấn tra cứu SKU và mã vạch}
+
+Tìm SKU theo tenant và mã SKU hoặc barcode phục vụ thao tác POS. Truy vấn cần dùng điều kiện trên TenantId để bảo đảm phạm vi dữ liệu và có thể sử dụng index tương ứng.
+
+\section{Truy vấn tồn kho khả dụng}
+
+Với một SKU tại một chi nhánh:
+\[
+Available = OnHand - Reserved.
+\]
+
+Truy vấn lấy OnHand và Reserved từ INVENTORY\_BALANCE, sau đó tính Available. Có thể lọc Available $\leq$ ReorderThreshold để phát hiện hàng sắp hết.
+
+\section{Truy vấn lịch sử biến động tồn}
+
+Truy vấn INVENTORY\_LEDGER theo TenantId, BranchId, SKUId và khoảng thời gian để trả lời: hàng nhập khi nào, xuất vì đơn nào, điều chỉnh bởi phiếu nào và số dư sau từng biến động.
+
+\section{Truy vấn đơn hàng}
+
+ORDER có thể được lọc theo tenant, trạng thái, kênh và khoảng thời gian. JOIN ORDER\_ITEM với PRODUCT\_VARIANT cho phép hiển thị chi tiết SKU, số lượng và giá bán.
+
+\section{Truy vấn doanh thu và COGS}
+
+Với các đơn hoàn tất, doanh thu có thể tính từ:
+\[
+Revenue=\sum(Quantity\times SellingPrice).
+\]
+
+COGS:
+\[
+COGS=\sum(Quantity\times CostPrice).
+\]
+
+Lợi nhuận gộp:
+\[
+GrossProfit=Revenue-COGS.
+\]
+
+Việc dùng CostPrice snapshot giúp kết quả lịch sử không phụ thuộc WAC hiện tại.
+
+\section{Truy vấn sản phẩm bán chạy và bán chậm}
+
+Có thể GROUP BY SKU và tổng hợp Quantity trong một khoảng thời gian. Kết quả dùng để xác định SKU có tốc độ bán cao hoặc thấp theo tiêu chí mà nhóm định nghĩa. Đây là phân tích dữ liệu, không phải một thực thể bắt buộc của CSDL.
+
+\section{Truy vấn cảnh báo tồn thấp}
+
+So sánh Available với ReorderThreshold theo từng SKU và chi nhánh. Truy vấn này minh họa cách kết hợp dữ liệu trạng thái hiện tại với thuộc tính nghiệp vụ của SKU.
+
+\section{Truy vấn kiểm tra toàn vẹn}
+
+Có thể xây dựng các truy vấn kiểm tra dữ liệu bất thường như: khóa ngoại mồ côi, barcode trùng, SKU trùng trong cùng tenant, Reserved lớn hơn OnHand, hoặc Ledger tham chiếu đến nghiệp vụ không tồn tại.
+
+\section{Liên hệ truy vấn với bài toán}
+
+\begin{table}[H]
+\centering
+\caption{Truy vấn và vấn đề nghiệp vụ được giải quyết}
+\begin{tabular}{|p{0.30\textwidth}|p{0.52\textwidth}|}
+\hline
+\textbf{Truy vấn} & \textbf{Vấn đề giải quyết} \\
+\hline
+SKU/barcode & Tra cứu nhanh sản phẩm tại POS. \\
+\hline
+Available theo chi nhánh & Biết lượng có thể bán và hỗ trợ chống bán vượt. \\
+\hline
+Inventory Ledger & Truy vết nguồn gốc biến động tồn. \\
+\hline
+Đơn hàng theo trạng thái/kênh & Theo dõi xử lý đơn đa kênh. \\
+\hline
+Revenue/COGS/GrossProfit & Đo hiệu quả bán hàng. \\
+\hline
+Tồn thấp & Hỗ trợ quyết định bổ sung hàng. \\
+\hline
+Kiểm tra toàn vẹn & Phát hiện dữ liệu bất thường. \\
+\hline
+\end{tabular}
+\end{table}
